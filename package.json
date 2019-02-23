@@ -1,0 +1,14 @@
+{
+  "name": "report",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ldkrsi/report.git",
+  "license": "MIT",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-connect": "^5.7.0"
+  }
+}
