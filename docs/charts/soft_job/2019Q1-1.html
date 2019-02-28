@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2019Q1</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/google-palette@1.1.0/palette.min.js"></script>
+</head>
+
+<body>
+	<canvas id="myChart" height="500"></canvas>
+	<script>
+		'use strict';
+		var myData = [["Golang", 42698], ["Lua", 41923], ["TypeScript", 41667], ["Perl", 41393], ["Ruby", 41000], ["Matlab", 40538], ["Objective-C", 40255], ["Kotlin", 39806], ["Swift", 39431], ["Python", 39066], ["C++", 38334], ["Scala", 37690], ["JavaScript", 37540], ["Java", 37034], ["C#", 35782], ["PHP", 35494], ["Visual Basic", 35473], ["VBA", 33933], ["Delphi", 33299]];
+		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
+		Chart.defaults.global.defaultFontSize = 14;
+		Chart.defaults.global.animation = false;
+		Chart.defaults.global.legend.display = false;
+		Chart.defaults.global.maintainAspectRatio = false;
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				labels: myData.map(function (row) { return row[0]; }),
+				datasets: [{
+					label: '平均起薪',
+					data: myData.map(function (row) { return row[1]; }),
+					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; })
+				}]
+			},
+			options: {
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+                        		label += ': ';
+							}
+							return label + 'NT$ ' + tooltipItem.xLabel.toLocaleString();
+						}
+					}
+				},
+				scales: {
+					xAxes: [{
+						ticks: {
+							min: 30000
+						}
+					}]
+				}
+			}
+		});
+		window.parent.postMessage({
+			sentinel: 'amp',
+			type: 'embed-size',
+			height: document.body.scrollHeight,
+			pathname: window.location.pathname
+		}, '*');
+	</script>
+</body>
+
+</html>

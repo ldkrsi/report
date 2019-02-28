@@ -5,10 +5,16 @@
   "repository": "git@github.com:ldkrsi/report.git",
   "license": "MIT",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "dev": "gulp dev"
   },
   "devDependencies": {
+    "autoprefixer": "^9.4.9",
+    "cssnano": "^4.1.10",
     "gulp": "^4.0.0",
-    "gulp-connect": "^5.7.0"
+    "gulp-connect": "^5.7.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0"
   }
 }

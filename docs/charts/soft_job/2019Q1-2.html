@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2019Q1</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/google-palette@1.1.0/palette.min.js"></script>
+</head>
+
+<body>
+	<canvas id="myChart" height="450"></canvas>
+	<script>
+		'use strict';
+		var myData = [["台北市",38123],["新竹縣市",37695],["新北市",36556],["桃園市",35665],["台南市",34617],["台中市",34064],["高雄市",34005]];
+		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
+		Chart.defaults.global.defaultFontSize = 13;
+		Chart.defaults.global.animation = false;
+		Chart.defaults.global.legend.display = false;
+		Chart.defaults.global.maintainAspectRatio = false;
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: myData.map(function (row) { return row[0]; }),
+				datasets: [{
+					label: '平均起薪',
+					data: myData.map(function (row) { return row[1]; }),
+					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; })
+				}]
+			},
+			options: {
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+                        		label += ': ';
+							}
+							return label + 'NT$ ' + tooltipItem.yLabel.toLocaleString();
+						}
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 30000
+						}
+					}]
+				}
+			}
+		});
+		window.parent.postMessage({
+			sentinel: 'amp',
+			type: 'embed-size',
+			height: document.body.scrollHeight,
+			pathname: window.location.pathname
+		}, '*');
+	</script>
+</body>
+
+</html>

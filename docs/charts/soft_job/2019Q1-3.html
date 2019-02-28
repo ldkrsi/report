@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2019Q1</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/google-palette@1.1.0/palette.min.js"></script>
+</head>
+
+<body>
+	<canvas id="myChart" height="500"></canvas>
+	<script>
+		'use strict';
+		var myData = [["Java",0.2782568525],["JavaScript",0.2649368648],["C#",0.2454573452],["C++",0.2415306437],["Python",0.1433631044],["Visual Basic",0.1137973514],["PHP",0.1131813982],["Objective-C",0.0365722205],["Swift",0.0327995072],["Perl",0.0153218355],["Matlab",0.0136279643],["Golang",0.0128580228],["Ruby",0.0125500462],["TypeScript",0.0088543271],["Delphi",0.0086233446],["Kotlin",0.007776409],["Scala",0.0064675085],["VBA",0.0047736372],["Lua",0.0035417308]];
+		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
+		Chart.defaults.global.defaultFontSize = 14;
+		Chart.defaults.global.animation = false;
+		Chart.defaults.global.legend.display = false;
+		Chart.defaults.global.maintainAspectRatio = false;
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				labels: myData.map(function (row) { return row[0]; }),
+				datasets: [{
+					label: '佔所有職缺',
+					data: myData.map(function (row) { return row[1]; }),
+					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; })
+				}]
+			},
+			options: {
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+                        		label += ': ';
+							}
+							return label + (Math.round(tooltipItem.xLabel*1000)/10 + '%');
+						}
+					}
+				},
+				scales: {
+					xAxes: [{
+						ticks: {
+							min: 0,
+							callback: function(value) {
+								return Math.round(value*1000)/10 + '%';
+							}
+						}
+					}]
+				}
+			}
+		});
+		window.parent.postMessage({
+			sentinel: 'amp',
+			type: 'embed-size',
+			height: document.body.scrollHeight,
+			pathname: window.location.pathname
+		}, '*');
+	</script>
+</body>
+
+</html>

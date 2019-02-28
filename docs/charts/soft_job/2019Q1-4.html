@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2019Q1</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/google-palette@1.1.0/palette.min.js"></script>
+</head>
+
+<body>
+	<canvas id="myChart" height="400"></canvas>
+	<script>
+		'use strict';
+		var myData = [["台北市",0.5042346782],["新北市",0.1537573144],["新竹縣市",0.1171080998],["台中市",0.0903141361],["桃園市",0.0470434247],["高雄市",0.0423467816],["台南市",0.025947028],["其他",0.0192485371]];
+		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
+		Chart.defaults.global.defaultFontSize = 14;
+		Chart.defaults.global.animation.animateRotate = false;
+		Chart.defaults.global.animation.duration = 0;
+		Chart.defaults.global.maintainAspectRatio = false;
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: myData.map(function (row) { return row[0]; }),
+				datasets: [{
+					data: myData.map(function (row) { return row[1]; }),
+					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; }),
+					borderWidth: 1
+				}]
+			},
+			options: {
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.labels[tooltipItem.index] || '';
+							if (label) {
+                        		label += ': ';
+							}
+							return label + (Math.round(data.datasets[0].data[tooltipItem.index]*1000)/10 + '%');
+						}
+					}
+				},
+			}
+		});
+		window.parent.postMessage({
+			sentinel: 'amp',
+			type: 'embed-size',
+			height: document.body.scrollHeight,
+			pathname: window.location.pathname
+		}, '*');
+	</script>
+</body>
+
+</html>
