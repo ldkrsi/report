@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh-hant">
+<html amp lang="zh-hant">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+	<script async custom-element="amp-facebook-comments" src="https://cdn.ampproject.org/v0/amp-facebook-comments-0.1.js"></script>
+	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+	<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 	<link rel="canonical" href="https://report.ldkrsi.men/soft_job/2019Q1/">
-	<link rel="amphtml" href="https://report.ldkrsi.men/soft_job/2019Q1/amp.html">
-	<link rel="stylesheet" href="/static/css/main.css">
 	<title>2019年Q1台灣軟體業就業情況調查</title>
-	<script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-P3SFVKR",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer");</script>
+	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+	<style amp-custom>body,div,em,h1,h2,h3,h4,h5,h6,html,iframe,li,main,ol,p,section,small,span,strong,table,tbody,td,th,thead,tr,ul{margin:0;padding:0;border:0;vertical-align:baseline;box-sizing:border-box;font-weight:400}body{font-family:Roboto,Helvetica,Arial,微軟正黑體,sans-serif;line-height:1.4;font-size:16px}table{border-collapse:collapse;border-spacing:0;width:100%;font-size:14px}table thead{border:1px solid #ddd;padding:.2em}table thead th{font-weight:600}table td{border:1px solid #ddd;padding:.5em}table td:first-child{width:60px;font-weight:600;text-align:center}table td:not(:first-child){padding-left:1em}table td:last-child{text-align:right}p{margin-bottom:1em}iframe{width:100%;overflow:hidden}small{font-size:60%}main{width:100%;max-width:1024px}h1,h2{border-bottom:1px solid #eaecef;padding-bottom:.3em;margin-bottom:16px;font-weight:600}h1{font-size:32px;margin-left:auto;margin-right:auto;margin-top:24px;width:calc(100% - 10px)}@media (min-width:768px){h1{width:calc(100% - 30px)}}h2{font-size:24px}h2,h3{margin-top:24px}h3{font-weight:600;font-size:20px}h3,ul{margin-bottom:16px}ul{padding-left:2em;list-style-type:disc}ul li{margin-bottom:4px}.container{padding-left:5px;padding-right:5px}@media (min-width:768px){.container{padding-left:15px;padding-right:15px}}.share-area{padding-top:50px}</style>
 </head>
 <body>
-	<div id="fb-root"></div>
+	<amp-analytics type="gtag" data-credentials="include">
+		<script type="application/json">
+		{
+			"vars" : {
+				"gtag_id": "UA-135442317-1",
+				"config" : {
+					"UA-135442317-1": { "groups": "default" }
+				}
+			}
+		}
+		</script>
+	</amp-analytics>
+	<amp-auto-ads type="adsense" data-ad-client="ca-pub-2406372780002585"></amp-auto-ads>
 	<main>
 		<h1>2019年Q1台灣軟體業就業情況調查</h1>
 		<div class="container">
@@ -21,7 +37,7 @@
 			<h2>新鮮人起薪<small>(經驗一年以下)</small></h2>
 			<h3>依語言</h3>
 			<div>
-				<iframe src="/charts/soft_job/2019Q1-1.html" frameborder="0" scrolling="no"></iframe>
+				<amp-iframe layout="responsive" frameborder="0" sandbox="allow-scripts allow-same-origin" resizable width="400" height="400" src="https://report.ldkrsi.men/charts/soft_job/2019Q1-1.html"><div overflow placeholder>amp</div></amp-iframe>
 				<table>
 					<thead>
 						<tr><th>排名</th><th>語言</th><th>平均起薪</th></tr>
@@ -52,7 +68,7 @@
 			
 			<h3>依地區</h3>
 			<div>
-				<iframe src="/charts/soft_job/2019Q1-2.html" frameborder="0" scrolling="no"></iframe>
+				<amp-iframe layout="responsive" frameborder="0" sandbox="allow-scripts allow-same-origin" resizable width="400" height="400" src="https://report.ldkrsi.men/charts/soft_job/2019Q1-2.html"><div overflow>amp</div></amp-iframe>
 				<table>
 					<thead>
 					<tr><th>排名</th><th>地區</th><th>平均起薪</th></tr>
@@ -73,7 +89,7 @@
 			<h2>工作機會</h2>
 			<h3>依語言</h3>
 			<div>
-				<iframe src="/charts/soft_job/2019Q1-3.html" frameborder="0" scrolling="no"></iframe>
+				<amp-iframe layout="responsive" frameborder="0" sandbox="allow-scripts allow-same-origin" resizable width="400" height="400" src="https://report.ldkrsi.men/charts/soft_job/2019Q1-3.html"><div overflow>amp</div></amp-iframe>
 				<table>
 					<thead>
 					<tr><th>排名</th><th>語言</th><th>佔所有職缺</th></tr>
@@ -103,7 +119,7 @@
 			</div>
 			<h3>依地區</h3>
 			<div>
-				<iframe src="/charts/soft_job/2019Q1-4.html" frameborder="0" scrolling="no"></iframe>
+				<amp-iframe layout="responsive" frameborder="0" sandbox="allow-scripts allow-same-origin" resizable width="400" height="400" src="https://report.ldkrsi.men/charts/soft_job/2019Q1-4.html"><div overflow>amp</div></amp-iframe>
 				<table>
 					<thead>
 					<tr><th>排名</th><th>地區</th><th>佔所有職缺</th></tr>
@@ -120,17 +136,15 @@
 					</tbody>
 				</table>
 			</div>
+			
 		</section>
 		<section class="container share-area">
-			<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-				<a class="a2a_button_facebook"></a>
-				<a class="a2a_button_facebook_messenger"></a>
-				<a class="a2a_button_linkedin"></a>
-				<a class="a2a_button_twitter"></a>
-				<a class="a2a_button_line"></a>
-				<a class="a2a_button_whatsapp"></a>
-				<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-			</div>
+			<amp-social-share type="system" data-mode="replace"></amp-social-share>
+			<amp-social-share type="facebook" data-param-app_id="896344313740896"></amp-social-share>
+			<amp-social-share type="linkedin"></amp-social-share>
+			<amp-social-share type="twitter"></amp-social-share>
+			<amp-social-share type="whatsapp"></amp-social-share>
+			<amp-social-share type="line"></amp-social-share>
 		</section>
 		<section class="container">
 			<h2>備註</h2>
@@ -143,20 +157,7 @@
 				<li>C語言、R語言因搜尋字串的問題而沒去統計； Haskell 、 Julia 和 Rust 因樣本太少不加入統計。</li>
 			</ul>
 		</section>
-		<div class="fb-comments" data-numposts="5" data-href="https://report.ldkrsi.men/soft_job/2019Q1/" data-width="100%"></div>
+		<amp-facebook-comments width=486 height=657 layout="responsive" data-numposts="5" data-href="https://report.ldkrsi.men/soft_job/2019Q1/"></amp-facebook-comments>
 	</main>
-	<script>
-		window.addEventListener("message", function(m) {
-			if (!m.data.pathname) {
-				return;
-			}
-			document.querySelector('iframe[src="' + m.data.pathname + '"]').style.height = m.data.height + 'px';
-		}, false);
-		var a2a_config = a2a_config || {};
-		a2a_config.locale = "zh-TW";
-		a2a_config.onclick = 1;
-	</script>
-	<script async src="https://static.addtoany.com/menu/page.js"></script>
-	<script async defer src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.2&appId=896344313740896&autoLogAppEvents=1"></script>
 </body>
 </html>

@@ -24,7 +24,6 @@ gulp.task('watch', gulp.series('sass', () => {
 gulp.task('dev', gulp.parallel('watch', () => {
 	connect.server({
 		host: '0.0.0.0',
-		root: 'docs',
-		livereload: true
+		root: 'docs'
 	});
 }));
