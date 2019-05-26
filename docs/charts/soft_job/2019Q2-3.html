@@ -15,7 +15,7 @@
 	<canvas id="myChart" height="500"></canvas>
 	<script>
 		'use strict';
-		var myData = [["Objective-C",43647],["Swift",42927],["Golang",42556],["Ruby",41905],["Perl",40527],["TypeScript",40489],["MATLAB",40303],["Lua",40000],["Kotlin",39553],["Python",38589],["C++",38288],["JavaScript",37552],["Scala",37370],["Java",36896],["PHP",35826],["C#",35738],["Visual Basic",35320],["Delphi",34278],["VBA",33910]];
+		var myData = [["JavaScript",0.2838795763],["Java",0.2789592194],["C#",0.2506046201],["C++",0.2131598699],["Python",0.1326828455],["PHP",0.1185889417],["Visual Basic",0.1168376282],["Objective-C",0.0378617296],["Swift",0.0356934367],["Golang",0.0157618214],["Ruby",0.0135935285],["Perl",0.0126761738],["Kotlin",0.0110082562],["TypeScript",0.0110082562],["Delphi",0.0093403386],["MATLAB",0.0075056292],["Scala",0.0066716704],["VBA",0.0042531899],["Lua",0.0036694187]];
 		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
 		Chart.defaults.global.defaultFontSize = 14;
 		Chart.defaults.global.animation = false;
@@ -27,7 +27,7 @@
 			data: {
 				labels: myData.map(function (row) { return row[0]; }),
 				datasets: [{
-					label: '平均起薪',
+					label: '佔所有職缺',
 					data: myData.map(function (row) { return row[1]; }),
 					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; })
 				}]
@@ -40,14 +40,17 @@
 							if (label) {
                         		label += ': ';
 							}
-							return label + 'NT$ ' + tooltipItem.xLabel.toLocaleString();
+							return label + (Math.round(tooltipItem.xLabel*1000)/10 + '%');
 						}
 					}
 				},
 				scales: {
 					xAxes: [{
 						ticks: {
-							min: 30000
+							min: 0,
+							callback: function(value) {
+								return Math.round(value*1000)/10 + '%';
+							}
 						}
 					}]
 				}

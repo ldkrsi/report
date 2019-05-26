@@ -12,18 +12,18 @@
 </head>
 
 <body>
-	<canvas id="myChart" height="500"></canvas>
+	<canvas id="myChart" height="450"></canvas>
 	<script>
 		'use strict';
-		var myData = [["Objective-C",43647],["Swift",42927],["Golang",42556],["Ruby",41905],["Perl",40527],["TypeScript",40489],["MATLAB",40303],["Lua",40000],["Kotlin",39553],["Python",38589],["C++",38288],["JavaScript",37552],["Scala",37370],["Java",36896],["PHP",35826],["C#",35738],["Visual Basic",35320],["Delphi",34278],["VBA",33910]];
+		var myData = [["台北市",40594],["新竹縣市",37014],["新北市",35756],["台中市",34600],["桃園市",34458],["台南市",33558],["高雄市",33271]];
 		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
-		Chart.defaults.global.defaultFontSize = 14;
+		Chart.defaults.global.defaultFontSize = 13;
 		Chart.defaults.global.animation = false;
 		Chart.defaults.global.legend.display = false;
 		Chart.defaults.global.maintainAspectRatio = false;
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var chart = new Chart(ctx, {
-			type: 'horizontalBar',
+			type: 'bar',
 			data: {
 				labels: myData.map(function (row) { return row[0]; }),
 				datasets: [{
@@ -40,12 +40,12 @@
 							if (label) {
                         		label += ': ';
 							}
-							return label + 'NT$ ' + tooltipItem.xLabel.toLocaleString();
+							return label + 'NT$ ' + tooltipItem.yLabel.toLocaleString();
 						}
 					}
 				},
 				scales: {
-					xAxes: [{
+					yAxes: [{
 						ticks: {
 							min: 30000
 						}

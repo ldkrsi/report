@@ -12,45 +12,38 @@
 </head>
 
 <body>
-	<canvas id="myChart" height="500"></canvas>
+	<canvas id="myChart" height="400"></canvas>
 	<script>
 		'use strict';
-		var myData = [["Objective-C",43647],["Swift",42927],["Golang",42556],["Ruby",41905],["Perl",40527],["TypeScript",40489],["MATLAB",40303],["Lua",40000],["Kotlin",39553],["Python",38589],["C++",38288],["JavaScript",37552],["Scala",37370],["Java",36896],["PHP",35826],["C#",35738],["Visual Basic",35320],["Delphi",34278],["VBA",33910]];
+		var myData = [["台北市",0.5258944208],["新北市",0.1583687766],["台中市",0.0969894087],["新竹縣市",0.0866483196],["桃園市",0.0465349012],["高雄市",0.0435326495],["台南市",0.0226836794],["其他",0.0193478442]];
 		Chart.defaults.global.defaultFontFamily = 'Roboto, Helvetica, Arial, "微軟正黑體", sans-serif';
 		Chart.defaults.global.defaultFontSize = 14;
-		Chart.defaults.global.animation = false;
-		Chart.defaults.global.legend.display = false;
+		Chart.defaults.global.animation.animateRotate = false;
+		Chart.defaults.global.animation.duration = 0;
 		Chart.defaults.global.maintainAspectRatio = false;
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var chart = new Chart(ctx, {
-			type: 'horizontalBar',
+			type: 'pie',
 			data: {
 				labels: myData.map(function (row) { return row[0]; }),
 				datasets: [{
-					label: '平均起薪',
 					data: myData.map(function (row) { return row[1]; }),
-					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; })
+					backgroundColor: palette('mpn65', myData.length).map(function (hex) { return '#' + hex; }),
+					borderWidth: 1
 				}]
 			},
 			options: {
 				tooltips: {
 					callbacks: {
 						label: function(tooltipItem, data) {
-							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							var label = data.labels[tooltipItem.index] || '';
 							if (label) {
                         		label += ': ';
 							}
-							return label + 'NT$ ' + tooltipItem.xLabel.toLocaleString();
+							return label + (Math.round(data.datasets[0].data[tooltipItem.index]*1000)/10 + '%');
 						}
 					}
 				},
-				scales: {
-					xAxes: [{
-						ticks: {
-							min: 30000
-						}
-					}]
-				}
 			}
 		});
 		window.parent.postMessage({
